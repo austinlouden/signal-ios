@@ -11,6 +11,7 @@
 #import "SGRootEmailCell.h"
 
 #import "IIViewDeckController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SGRootViewController ()
 {
@@ -34,12 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Inbox";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithWhite:0.7f alpha:1.0f];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
-                                                                                          target:self
-                                                                                          action:@selector(slidePressed)];
+    self.navigationController.navigationBarHidden = YES;
     
     // data source
     NSString *path = [[NSBundle mainBundle] pathForResource:@"SampleMail" ofType:@"plist"];
@@ -48,7 +45,26 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.contentInset = UIEdgeInsetsMake(40,0,0,0);
     [self.view addSubview:_tableView];
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    headerView.alpha = 0.95f;
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
+    headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.text = @"Inbox";
+    headerLabel.textColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 39.0f, self.view.frame.size.width, 0.5f)];
+    divider.backgroundColor = [UIColor colorWithWhite:0.5f alpha:1.0f];
+    
+    [headerView addSubview:headerLabel];
+    [headerView addSubview:divider];
+    [self.view addSubview:headerView];
 }
 
 #pragma mark - Actions
