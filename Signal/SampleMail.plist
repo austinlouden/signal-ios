@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>subject</key>
+        <string>Send Check</string>
+        <key>body</key>
+        <string>$256.00
+221B, Baker St.
+        </string>
+        <key>sender</key>
+        <string>Sam Holmes</string>
+	</dict>
+    <dict>
+		<key>subject</key>
+        <string>Eleven Kinds of Loneliness</string>
+        <key>body</key>
+        <string>ETA: Friday</string>
+        <key>sender</key>
+        <string>Amazon.com</string>
+	</dict>
+    <dict>
+		<key>subject</key>
+        <string>Test subject</string>
+        <key>body</key>
+        <string>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in vulputate metus. Praesent in dignissim justo.</string>
+        <key>sender</key>
+        <string>Amazon.com</string>
+	</dict>
+    <dict>
+		<key>subject</key>
+        <string>Test subject</string>
+        <key>body</key>
+        <string>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in vulputate metus. Praesent in dignissim justo.</string>
+        <key>sender</key>
+        <string>Amazon.com</string>
+	</dict>
+</array>
+</plist>
