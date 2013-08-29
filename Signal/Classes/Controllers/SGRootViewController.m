@@ -8,6 +8,7 @@
 
 #import "SGRootViewController.h"
 
+#import "SGMessageViewController.h"
 #import "SGRootEmailCell.h"
 
 #import "IIViewDeckController.h"
@@ -49,8 +50,7 @@
     [self.view addSubview:_tableView];
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
-    headerView.backgroundColor = [UIColor whiteColor];
-    headerView.alpha = 0.95f;
+    headerView.backgroundColor = [UIColor colorWithWhite:0.98f alpha:0.95f];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
@@ -78,7 +78,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d", emails.count);
     return emails ? emails.count : 0;
 }
 
@@ -99,6 +98,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 87.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SGMessageViewController *messageViewController = [[SGMessageViewController alloc] initWithEmail:[emails objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:messageViewController animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning
