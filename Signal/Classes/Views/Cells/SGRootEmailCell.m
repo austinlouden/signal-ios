@@ -36,6 +36,7 @@
         subjectLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
         [self.contentView addSubview:subjectLabel];
         
+        
         bodyLabel = [[UILabel alloc] init];
         bodyLabel.backgroundColor = [UIColor clearColor];
         bodyLabel.textColor = [UIColor colorWithWhite:0.5f alpha:1.0f];
@@ -43,6 +44,8 @@
         bodyLabel.numberOfLines = 2;
         bodyLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self.contentView addSubview:bodyLabel];
+        
+        
     }
     return self;
 }
@@ -60,7 +63,8 @@
     [super layoutSubviews];
     senderLabel.frame = CGRectMake(15.0f, 6.0f, self.frame.size.width, 20.0f);
     subjectLabel.frame = CGRectMake(15.0f, 17.0f, self.frame.size.width, 30.0f);
-    bodyLabel.frame = CGRectMake(15.0f, 37.0f, self.frame.size.width-10.0f, 45.0f);
+    bodyLabel.frame = CGRectMake(15.0f, 42.0f, self.frame.size.width-10.0f, 45.0f);
+    [bodyLabel sizeToFit];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
