@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = YES;    
     
     // data source
     NSString *path = [[NSBundle mainBundle] pathForResource:@"SampleMail" ofType:@"plist"];

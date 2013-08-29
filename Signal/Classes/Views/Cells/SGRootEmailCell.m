@@ -36,7 +36,6 @@
         subjectLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
         [self.contentView addSubview:subjectLabel];
         
-        
         bodyLabel = [[UILabel alloc] init];
         bodyLabel.backgroundColor = [UIColor clearColor];
         bodyLabel.textColor = [UIColor colorWithWhite:0.5f alpha:1.0f];

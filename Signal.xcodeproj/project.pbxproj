@@ -464,6 +464,10 @@
 		892AA11F17CEE9A000590B05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Signal/Classes/External\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				INFOPLIST_FILE = "Signal/Signal-Info.plist";
@@ -475,6 +479,10 @@
 		892AA12017CEE9A000590B05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Signal/Classes/External\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				INFOPLIST_FILE = "Signal/Signal-Info.plist";
