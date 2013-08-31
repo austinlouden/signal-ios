@@ -51,7 +51,7 @@
 
 - (void)setEmail:(NSDictionary *)email
 {
-    senderLabel.text = [email objectForKey:@"sender"];
+    senderLabel.text = [[[email objectForKey:@"meta"] objectForKey:@"from"] objectForKey:@"name"];
     subjectLabel.text = [email objectForKey:@"subject"];
     bodyLabel.text = [email objectForKey:@"body"];
     

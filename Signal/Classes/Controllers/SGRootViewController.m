@@ -10,13 +10,15 @@
 
 #import "SGMessageViewController.h"
 #import "SGRootEmailCell.h"
+#import "SGAPIClient.h"
 
 #import "IIViewDeckController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <Firebase/Firebase.h>
 
 @interface SGRootViewController ()
 {
-    NSArray *emails;
+    NSMutableDictionary *emails;
 }
 @property (nonatomic, strong) UITableView *tableView;
 @end
@@ -37,11 +39,19 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBarHidden = YES;    
+    self.navigationController.navigationBarHidden = YES;
     
-    // data source
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"SampleMail" ofType:@"plist"];
-    emails = [[NSArray alloc] initWithContentsOfFile:path];
+    
+    NSString *authToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkIjp7ImVtYWlsX2hhc2giOiJmZGI4NzQ4ODA0MWUwNWYzMmQ2MzE0MGJhOTliY2Y5ZiIsImRvbWFpbiI6ImdtYWlsLmNvbSIsImV4cCI6MTM5MzQ5MTE5MywiYWRtaW4iOmZhbHNlfSwidiI6MCwiaWF0IjoxMzc3OTM5MTkzfQ.RqA1i63pMk1eyQZeSBY-5cxoMKTqtSdIm7YE-Xi8P0w";
+    
+    // get the email JSON
+    [[SGAPIClient sharedClient] getPath:@"users/fdb87488041e05f32d63140ba99bcf9f.json" parameters:@{@"auth": authToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        emails = [responseObject objectForKey:@"emails"];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+    
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     _tableView.dataSource = self;
@@ -49,8 +59,10 @@
     _tableView.contentInset = UIEdgeInsetsMake(40,0,0,0);
     [self.view addSubview:_tableView];
     
+    emails = [NSMutableDictionary dictionary];
+    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
-    headerView.backgroundColor = [UIColor colorWithWhite:0.98f alpha:0.95f];
+    headerView.backgroundColor = [UIColor colorWithWhite:(248.0f/255.0f) alpha:0.95f];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
@@ -65,6 +77,15 @@
     [headerView addSubview:headerLabel];
     [headerView addSubview:divider];
     [self.view addSubview:headerView];
+    
+    /* Create a reference to a Firebase location
+    Firebase* firebase = [[Firebase alloc] initWithUrl:@"https://signal.firebaseIO.com/"];
+    [firebase authWithCredential:@"" withCompletionBlock:^(NSError *error, id data) {
+        ;
+    } withCancelBlock:^(NSError *error) {
+        ;
+    }];
+     */
 }
 
 #pragma mark - Actions
@@ -78,7 +99,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return emails ? emails.count : 0;
+    return emails ? [emails allKeys].count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -88,7 +109,7 @@
         cell = [[SGRootEmailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell Identifier"];
     }
     
-    cell.email = [emails objectAtIndex:indexPath.row];
+    cell.email = [emails objectForKey:[[emails allKeys] objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -102,7 +123,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SGMessageViewController *messageViewController = [[SGMessageViewController alloc] initWithEmail:[emails objectAtIndex:indexPath.row]];
+    SGMessageViewController *messageViewController = [[SGMessageViewController alloc] initWithEmail:[emails objectForKey:[[emails allKeys] objectAtIndex:indexPath.row]]];
     [self.navigationController pushViewController:messageViewController animated:YES];
     
 }

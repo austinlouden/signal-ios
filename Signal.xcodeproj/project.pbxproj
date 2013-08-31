@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		892628E817D28D3000425858 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892628E717D28D3000425858 /* Firebase.framework */; };
+		892628EA17D28D4D00425858 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 892628E917D28D4D00425858 /* libicucore.dylib */; };
+		892628EC17D28D5500425858 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892628EB17D28D5500425858 /* CFNetwork.framework */; };
+		892628EE17D28D5B00425858 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892628ED17D28D5B00425858 /* Security.framework */; };
+		8926290317D2910500425858 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 892628F117D2910500425858 /* AFHTTPClient.m */; };
+		8926290417D2910500425858 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 892628F317D2910500425858 /* AFHTTPRequestOperation.m */; };
+		8926290517D2910500425858 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 892628F517D2910500425858 /* AFImageRequestOperation.m */; };
+		8926290617D2910500425858 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 892628F717D2910500425858 /* AFJSONRequestOperation.m */; };
+		8926290717D2910500425858 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 892628F917D2910500425858 /* AFNetworkActivityIndicatorManager.m */; };
+		8926290817D2910500425858 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 892628FC17D2910500425858 /* AFPropertyListRequestOperation.m */; };
+		8926290917D2910500425858 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 892628FE17D2910500425858 /* AFURLConnectionOperation.m */; };
+		8926290A17D2910500425858 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8926290017D2910500425858 /* AFXMLRequestOperation.m */; };
+		8926290B17D2910500425858 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8926290217D2910500425858 /* UIImageView+AFNetworking.m */; };
+		8926290E17D2914600425858 /* SGAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8926290D17D2914600425858 /* SGAPIClient.m */; };
+		8926291017D2924700425858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8926290F17D2924700425858 /* SystemConfiguration.framework */; };
+		8926291217D2925200425858 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8926291117D2925200425858 /* MobileCoreServices.framework */; };
 		892AA0F017CEE9A000590B05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892AA0EF17CEE9A000590B05 /* UIKit.framework */; };
 		892AA0F217CEE9A000590B05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892AA0F117CEE9A000590B05 /* Foundation.framework */; };
 		892AA0F417CEE9A000590B05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892AA0F317CEE9A000590B05 /* CoreGraphics.framework */; };
@@ -43,6 +59,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		892628E717D28D3000425858 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		892628E917D28D4D00425858 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		892628EB17D28D5500425858 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		892628ED17D28D5B00425858 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		892628F017D2910500425858 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		892628F117D2910500425858 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		892628F217D2910500425858 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		892628F317D2910500425858 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		892628F417D2910500425858 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		892628F517D2910500425858 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		892628F617D2910500425858 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		892628F717D2910500425858 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		892628F817D2910500425858 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		892628F917D2910500425858 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		892628FA17D2910500425858 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		892628FB17D2910500425858 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		892628FC17D2910500425858 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		892628FD17D2910500425858 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		892628FE17D2910500425858 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		892628FF17D2910500425858 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		8926290017D2910500425858 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		8926290117D2910500425858 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		8926290217D2910500425858 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		8926290C17D2914600425858 /* SGAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGAPIClient.h; path = Signal/SGAPIClient.h; sourceTree = SOURCE_ROOT; };
+		8926290D17D2914600425858 /* SGAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGAPIClient.m; path = Signal/SGAPIClient.m; sourceTree = SOURCE_ROOT; };
+		8926290F17D2924700425858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8926291117D2925200425858 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		892AA0EC17CEE9A000590B05 /* Signal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		892AA0EF17CEE9A000590B05 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		892AA0F117CEE9A000590B05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,10 +128,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8926291217D2925200425858 /* MobileCoreServices.framework in Frameworks */,
+				8926291017D2924700425858 /* SystemConfiguration.framework in Frameworks */,
+				892628EE17D28D5B00425858 /* Security.framework in Frameworks */,
+				892628EC17D28D5500425858 /* CFNetwork.framework in Frameworks */,
+				892628EA17D28D4D00425858 /* libicucore.dylib in Frameworks */,
 				892AA13817CEF19E00590B05 /* QuartzCore.framework in Frameworks */,
 				892AA0F017CEE9A000590B05 /* UIKit.framework in Frameworks */,
 				892AA0F217CEE9A000590B05 /* Foundation.framework in Frameworks */,
 				892AA0F417CEE9A000590B05 /* CoreGraphics.framework in Frameworks */,
+				892628E817D28D3000425858 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +154,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		892628EF17D2910500425858 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				892628F017D2910500425858 /* AFHTTPClient.h */,
+				892628F117D2910500425858 /* AFHTTPClient.m */,
+				892628F217D2910500425858 /* AFHTTPRequestOperation.h */,
+				892628F317D2910500425858 /* AFHTTPRequestOperation.m */,
+				892628F417D2910500425858 /* AFImageRequestOperation.h */,
+				892628F517D2910500425858 /* AFImageRequestOperation.m */,
+				892628F617D2910500425858 /* AFJSONRequestOperation.h */,
+				892628F717D2910500425858 /* AFJSONRequestOperation.m */,
+				892628F817D2910500425858 /* AFNetworkActivityIndicatorManager.h */,
+				892628F917D2910500425858 /* AFNetworkActivityIndicatorManager.m */,
+				892628FA17D2910500425858 /* AFNetworking.h */,
+				892628FB17D2910500425858 /* AFPropertyListRequestOperation.h */,
+				892628FC17D2910500425858 /* AFPropertyListRequestOperation.m */,
+				892628FD17D2910500425858 /* AFURLConnectionOperation.h */,
+				892628FE17D2910500425858 /* AFURLConnectionOperation.m */,
+				892628FF17D2910500425858 /* AFXMLRequestOperation.h */,
+				8926290017D2910500425858 /* AFXMLRequestOperation.m */,
+				8926290117D2910500425858 /* UIImageView+AFNetworking.h */,
+				8926290217D2910500425858 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
 		892AA0E317CEE9A000590B05 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +202,12 @@
 		892AA0EE17CEE9A000590B05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8926291117D2925200425858 /* MobileCoreServices.framework */,
+				8926290F17D2924700425858 /* SystemConfiguration.framework */,
+				892628ED17D28D5B00425858 /* Security.framework */,
+				892628EB17D28D5500425858 /* CFNetwork.framework */,
+				892628E917D28D4D00425858 /* libicucore.dylib */,
+				892628E717D28D3000425858 /* Firebase.framework */,
 				892AA13717CEF19E00590B05 /* QuartzCore.framework */,
 				892AA0EF17CEE9A000590B05 /* UIKit.framework */,
 				892AA0F117CEE9A000590B05 /* Foundation.framework */,
@@ -187,6 +268,8 @@
 				892AA13B17CEFC0600590B05 /* Views */,
 				892AA12917CEEE9C00590B05 /* External */,
 				892AA12517CEEA7E00590B05 /* Controllers */,
+				8926290C17D2914600425858 /* SGAPIClient.h */,
+				8926290D17D2914600425858 /* SGAPIClient.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -207,6 +290,7 @@
 		892AA12917CEEE9C00590B05 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				892628EF17D2910500425858 /* AFNetworking */,
 				892AA12A17CEEE9C00590B05 /* ViewDeck */,
 			);
 			path = External;
@@ -362,6 +446,16 @@
 				892AA13617CEF08400590B05 /* SGSideViewController.m in Sources */,
 				892AA13F17CEFC3F00590B05 /* SGRootEmailCell.m in Sources */,
 				892AA14217CF889C00590B05 /* SGMessageViewController.m in Sources */,
+				8926290317D2910500425858 /* AFHTTPClient.m in Sources */,
+				8926290417D2910500425858 /* AFHTTPRequestOperation.m in Sources */,
+				8926290517D2910500425858 /* AFImageRequestOperation.m in Sources */,
+				8926290617D2910500425858 /* AFJSONRequestOperation.m in Sources */,
+				8926290717D2910500425858 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8926290817D2910500425858 /* AFPropertyListRequestOperation.m in Sources */,
+				8926290917D2910500425858 /* AFURLConnectionOperation.m in Sources */,
+				8926290A17D2910500425858 /* AFXMLRequestOperation.m in Sources */,
+				8926290B17D2910500425858 /* UIImageView+AFNetworking.m in Sources */,
+				8926290E17D2914600425858 /* SGAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,10 +561,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Signal/Classes/External\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				INFOPLIST_FILE = "Signal/Signal-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -482,10 +578,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Signal/Classes/External\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				INFOPLIST_FILE = "Signal/Signal-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
