@@ -105,6 +105,7 @@
 
     
     webView.scrollView.contentInset = UIEdgeInsetsMake(subjectField.frame.size.height+senderLabel.frame.size.height, 0.0f, 0.0f, 0.0f);
+    webView.scalesPageToFit = YES;
     
     [self.view addSubview:webView];
 }
