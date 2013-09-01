@@ -28,7 +28,7 @@
 {
     if (self = [super init]) {
         _email = email;
-        NSLog(@"%@", [_email objectForKey:@"body"]);
+        NSLog(@"%@", _email);
     }
     
     return self;
