@@ -41,7 +41,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = YES;
     
-    
     NSString *authToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkIjp7ImVtYWlsX2hhc2giOiJmZGI4NzQ4ODA0MWUwNWYzMmQ2MzE0MGJhOTliY2Y5ZiIsImRvbWFpbiI6ImdtYWlsLmNvbSIsImV4cCI6MTM5MzQ5MTE5MywiYWRtaW4iOmZhbHNlfSwidiI6MCwiaWF0IjoxMzc3OTM5MTkzfQ.RqA1i63pMk1eyQZeSBY-5cxoMKTqtSdIm7YE-Xi8P0w";
     
     // get the email JSON
@@ -52,7 +51,7 @@
         NSLog(@"%@", error);
     }];
     
-    
+    // create the table view
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -61,6 +60,7 @@
     
     emails = [NSMutableDictionary dictionary];
     
+    // create the header
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
     headerView.backgroundColor = [UIColor colorWithWhite:(248.0f/255.0f) alpha:0.95f];
     

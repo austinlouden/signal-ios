@@ -52,8 +52,8 @@
 - (void)setEmail:(NSDictionary *)email
 {
     senderLabel.text = [[[email objectForKey:@"meta"] objectForKey:@"from"] objectForKey:@"name"];
-    subjectLabel.text = [email objectForKey:@"subject"];
-    bodyLabel.text = [email objectForKey:@"body"];
+    subjectLabel.text = [self stringByStrippingHTML:[email objectForKey:@"subject"]];
+    bodyLabel.text = [self stringByStrippingHTML:[email objectForKey:@"body"]];
     
 }
 
@@ -71,6 +71,14 @@
     //[super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (NSString *)stringByStrippingHTML:(NSString*)s
+{
+    NSRange r;
+    while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
+        s = [s stringByReplacingCharactersInRange:r withString:@""];
+    return s;
 }
 
 @end
