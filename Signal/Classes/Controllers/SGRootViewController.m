@@ -18,7 +18,7 @@
 
 @interface SGRootViewController ()
 {
-    NSMutableDictionary *emails;
+    NSMutableArray *emails;
 }
 @property (nonatomic, strong) UITableView *tableView;
 @end
@@ -45,7 +45,10 @@
     
     // get the email JSON
     [[SGAPIClient sharedClient] getPath:@"users/fdb87488041e05f32d63140ba99bcf9f.json" parameters:@{@"auth": authToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        emails = [responseObject objectForKey:@"emails"];
+        for(int i=0; i<[[responseObject objectForKey:@"emails"] allKeys].count; i++) {
+            [emails addObject:[[responseObject objectForKey:@"emails"] objectForKey:[[[responseObject objectForKey:@"emails"] allKeys] objectAtIndex:i]]];
+        }
+        NSLog(@"%@", emails);
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
@@ -58,7 +61,7 @@
     _tableView.contentInset = UIEdgeInsetsMake(40,0,0,0);
     [self.view addSubview:_tableView];
     
-    emails = [NSMutableDictionary dictionary];
+    emails = [NSMutableArray array];
     
     // create the header
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
@@ -99,7 +102,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return emails ? [emails allKeys].count : 0;
+    return emails ? emails.count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,7 +112,7 @@
         cell = [[SGRootEmailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell Identifier"];
     }
     
-    cell.email = [emails objectForKey:[[emails allKeys] objectAtIndex:indexPath.row]];
+    cell.email = [emails objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -123,7 +126,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SGMessageViewController *messageViewController = [[SGMessageViewController alloc] initWithEmail:[emails objectForKey:[[emails allKeys] objectAtIndex:indexPath.row]]];
+    SGMessageViewController *messageViewController = [[SGMessageViewController alloc] initWithEmail:[emails objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:messageViewController animated:YES];
     
 }
