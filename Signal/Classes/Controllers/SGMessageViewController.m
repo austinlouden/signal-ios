@@ -64,6 +64,7 @@
 
     // web view
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 40.0f, self.view.frame.size.width, self.view.frame.size.height - 40.0f)];
+    webView.delegate = self;
     webView.scrollView.backgroundColor = [UIColor whiteColor];
     webView.backgroundColor = [UIColor whiteColor];
     for (UIView* subView in [webView subviews])
@@ -80,10 +81,11 @@
     
     NSString *testBody = [_email objectForKey:@"body"];
     
-    NSString *wrappedBody = [NSString stringWithFormat:@"<div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
+    NSString *wrappedBody = [NSString stringWithFormat:@"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" id=\"iphone-viewport\" content=\"width=device-width, initial-scale=1.0\"><div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
     [webView loadHTMLString:wrappedBody baseURL:nil];
     webView.keyboardDisplayRequiresUserAction = NO;
     
+    // labels inside the web view's scroll view
     UITextView *subjectField = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, self.view.frame.size.width, 100.0f)];
     subjectField.text = [_email objectForKey:@"subject"];
     subjectField.backgroundColor = [UIColor clearColor];
@@ -114,16 +116,32 @@
     subjectDivider.backgroundColor = [UIColor colorWithWhite:0.7f alpha:1.0f];
     [webView.scrollView addSubview:subjectDivider];
 
-
-    
     webView.scrollView.contentInset = UIEdgeInsetsMake(subjectField.frame.size.height+senderLabel.frame.size.height, 0.0f, 0.0f, 0.0f);
+    webView.scalesPageToFit = YES;
     
     [self.view addSubview:webView];
 }
 
+#pragma mark - Actions
+
 - (void)backPressed
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    CGSize contentSize = webView.scrollView.contentSize;
+    CGSize viewSize = self.view.bounds.size;
+    
+    float rw = viewSize.width / contentSize.width;
+    
+    webView.scrollView.minimumZoomScale = rw;
+    webView.scrollView.maximumZoomScale = rw;
+    webView.scrollView.zoomScale = rw;
+    
 }
 
 - (void)didReceiveMemoryWarning

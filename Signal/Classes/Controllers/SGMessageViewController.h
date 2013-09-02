@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SGMessageViewController : UIViewController
+@interface SGMessageViewController : UIViewController <UIWebViewDelegate>
 - (id)initWithEmail:(NSDictionary *)email;
 @end

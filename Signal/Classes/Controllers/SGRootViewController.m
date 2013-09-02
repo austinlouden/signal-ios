@@ -60,7 +60,7 @@
 - (void)getEmails
 {
     UIActivityIndicatorView *aiView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    aiView.frame = CGRectMake(120.0f, 200.0f, 0.0f, 0.0f);
+    aiView.center = self.view.center;
     aiView.hidesWhenStopped = YES;
     [self.view addSubview:aiView];
     [aiView startAnimating];
@@ -96,7 +96,7 @@
 {
     // create the header
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
-    headerView.backgroundColor = [UIColor colorWithWhite:(248.0f/255.0f) alpha:0.95f];
+    headerView.backgroundColor = [UIColor colorWithWhite:(248.0f/255.0f) alpha:1.0f];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
