@@ -48,8 +48,18 @@
         for(int i=0; i<[[responseObject objectForKey:@"emails"] allKeys].count; i++) {
             [emails addObject:[[responseObject objectForKey:@"emails"] objectForKey:[[[responseObject objectForKey:@"emails"] allKeys] objectAtIndex:i]]];
         }
-        NSLog(@"%@", emails);
+        
+        // sort the email array by date (most recent first)
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"EEE, MMM dd, yyyy 'at' hh:mm a"];
+        [emails sortUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
+            NSDate *first = [dateFormat dateFromString:[[obj1 objectForKey:@"meta"] objectForKey:@"date"]];
+            NSDate *second = [dateFormat dateFromString:[[obj2 objectForKey:@"meta"] objectForKey:@"date"]];
+            return [second compare:first];
+        }];
+        
         [self.tableView reloadData];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
     }];
