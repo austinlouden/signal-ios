@@ -44,15 +44,15 @@
     headerView.backgroundColor = [UIColor colorWithWhite:0.98f alpha:0.95f];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(8.0f, 0.0f, 40.0f, 40.0f);
-    backButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
-    [backButton setTitle:@"<" forState:UIControlStateNormal];
+    backButton.frame = CGRectMake(8.0f, 2.0f, 40.0f, 40.0f);
+    backButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15.0f];
+    [backButton setTitle:@"Inbox" forState:UIControlStateNormal];
     [backButton setBackgroundColor:[UIColor clearColor]];
-    [backButton setTitleColor:[UIColor colorWithWhite:0.1f alpha:1.0f] forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor colorWithRed:(0.0f/255.0f) green:(102.0f/255.0f) blue:(255.0f/255.0f) alpha:1.0f] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backPressed) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 39.5f, self.view.frame.size.width, 0.5f)];
-    divider.backgroundColor = [UIColor colorWithWhite:0.5f alpha:1.0f];
+    divider.backgroundColor = [UIColor colorWithWhite:(178.0f/255.0f) alpha:1.0f];
     
     [headerView addSubview:backButton];
     [headerView addSubview:divider];
@@ -80,7 +80,6 @@
     [webView loadHTMLString:wrappedBody baseURL:nil];
     webView.keyboardDisplayRequiresUserAction = NO;
     
-    
     UITextView *subjectField = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, self.view.frame.size.width, 100.0f)];
     subjectField.text = [_email objectForKey:@"subject"];
     subjectField.backgroundColor = [UIColor clearColor];
@@ -91,12 +90,21 @@
     
     UILabel *senderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 30.0f)];
     senderLabel.text = [[[_email objectForKey:@"meta"] objectForKey:@"from"] objectForKey:@"name"];
-    senderLabel.textColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
-    senderLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
+    senderLabel.textColor = [UIColor colorWithRed:0.0f green:122.0f/255.0f blue:1.0f alpha:1.0f];
+    senderLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0f];
     senderLabel.backgroundColor = [UIColor clearColor];
     [senderLabel sizeToFit];
-    senderLabel.frame = CGRectMake(18.0f, -senderLabel.frame.size.height-subjectField.frame.size.height+5.0f, self.view.frame.size.width-20.0f, senderLabel.frame.size.height);
+    senderLabel.frame = CGRectMake(18.0f, -senderLabel.frame.size.height-subjectField.frame.size.height+5.0f, senderLabel.frame.size.width, senderLabel.frame.size.height);
     [webView.scrollView addSubview:senderLabel];
+    
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 30.0f)];
+    dateLabel.text = [[_email objectForKey:@"meta"] objectForKey:@"date"];
+    dateLabel.textColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
+    dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
+    dateLabel.backgroundColor = [UIColor clearColor];
+    [dateLabel sizeToFit];
+    dateLabel.frame = CGRectMake(senderLabel.frame.size.width+senderLabel.frame.origin.x+5.0f, -senderLabel.frame.size.height-subjectField.frame.size.height+5.0f, self.view.frame.size.width - senderLabel.frame.size.width, senderLabel.frame.size.height);
+    [webView.scrollView addSubview:dateLabel];
     
     UIView *subjectDivider = [[UIView alloc] initWithFrame:CGRectMake(15.0f, -2.0f, self.view.frame.size.width-15.0f, 0.3f)];
     subjectDivider.backgroundColor = [UIColor colorWithWhite:0.7f alpha:1.0f];

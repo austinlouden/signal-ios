@@ -38,8 +38,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = YES;
+    
+    // create the table view
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.contentInset = UIEdgeInsetsMake(40,0,0,0);
+    _tableView.hidden = YES;
+    [self.view addSubview:_tableView];
+    
+    emails = [NSMutableArray array];
+    [self getEmails];
+    [self setupUI];
+}
+
+#pragma mark - Setup
+
+- (void)getEmails
+{
+    UIActivityIndicatorView *aiView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    aiView.frame = CGRectMake(120.0f, 200.0f, 0.0f, 0.0f);
+    aiView.hidesWhenStopped = YES;
+    [self.view addSubview:aiView];
+    [aiView startAnimating];
     
     NSString *authToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkIjp7ImVtYWlsX2hhc2giOiJmZGI4NzQ4ODA0MWUwNWYzMmQ2MzE0MGJhOTliY2Y5ZiIsImRvbWFpbiI6ImdtYWlsLmNvbSIsImV4cCI6MTM5MzcwNTYyNywidGltZV9oYXNoIjoiMC4xOTQ4NDcwMCAxMzc4MTUzNjI3IiwiYWRtaW4iOmZhbHNlfSwidiI6MCwiaWF0IjoxMzc4MTUzNjI3fQ.TLlR0lMdUpcd43y_DkevxOcS2A2ZYaJBFxcuCEoS9jw";
     
@@ -58,21 +82,18 @@
             return [second compare:first];
         }];
         
-        [self.tableView reloadData];
+        [_tableView reloadData];
+        [aiView stopAnimating];
+        _tableView.hidden = NO;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
     }];
     
-    // create the table view
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.contentInset = UIEdgeInsetsMake(40,0,0,0);
-    [self.view addSubview:_tableView];
-    
-    emails = [NSMutableArray array];
-    
+}
+
+- (void)setupUI
+{
     // create the header
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
     headerView.backgroundColor = [UIColor colorWithWhite:(248.0f/255.0f) alpha:0.95f];
@@ -90,15 +111,6 @@
     [headerView addSubview:headerLabel];
     [headerView addSubview:divider];
     [self.view addSubview:headerView];
-    
-    /* Create a reference to a Firebase location
-    Firebase* firebase = [[Firebase alloc] initWithUrl:@"https://signal.firebaseIO.com/"];
-    [firebase authWithCredential:@"" withCompletionBlock:^(NSError *error, id data) {
-        ;
-    } withCancelBlock:^(NSError *error) {
-        ;
-    }];
-     */
 }
 
 #pragma mark - Actions
