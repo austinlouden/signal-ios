@@ -44,12 +44,16 @@
     headerView.backgroundColor = [UIColor colorWithWhite:0.98f alpha:0.95f];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(8.0f, 2.0f, 40.0f, 40.0f);
+    backButton.frame = CGRectMake(24.0f, 2.0f, 40.0f, 40.0f);
     backButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15.0f];
     [backButton setTitle:@"Inbox" forState:UIControlStateNormal];
     [backButton setBackgroundColor:[UIColor clearColor]];
     [backButton setTitleColor:[UIColor colorWithRed:(0.0f/255.0f) green:(102.0f/255.0f) blue:(255.0f/255.0f) alpha:1.0f] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImageView *backArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backButton.png"]];
+    backArrow.frame = CGRectMake(4.0f, 8.0f, 20.5f, 26.0f);
+    [headerView addSubview:backArrow];
     
     UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 39.5f, self.view.frame.size.width, 0.5f)];
     divider.backgroundColor = [UIColor colorWithWhite:(178.0f/255.0f) alpha:1.0f];

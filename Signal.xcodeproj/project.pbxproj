@@ -46,6 +46,7 @@
 		892AA13A17CEF7B400590B05 /* SampleMail.plist in Resources */ = {isa = PBXBuildFile; fileRef = 892AA13917CEF7B400590B05 /* SampleMail.plist */; };
 		892AA13F17CEFC3F00590B05 /* SGRootEmailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA13E17CEFC3F00590B05 /* SGRootEmailCell.m */; };
 		892AA14217CF889C00590B05 /* SGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA14117CF889C00590B05 /* SGMessageViewController.m */; };
+		8996D1C517D54C8C00024BD9 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8996D1C417D54C8C00024BD9 /* backButton@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		892AA13E17CEFC3F00590B05 /* SGRootEmailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRootEmailCell.m; sourceTree = "<group>"; };
 		892AA14017CF889C00590B05 /* SGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMessageViewController.h; sourceTree = "<group>"; };
 		892AA14117CF889C00590B05 /* SGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMessageViewController.m; sourceTree = "<group>"; };
+		8996D1C417D54C8C00024BD9 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				892AA0FE17CEE9A000590B05 /* SGAppDelegate.h */,
 				892AA0FF17CEE9A000590B05 /* SGAppDelegate.m */,
 				892AA13917CEF7B400590B05 /* SampleMail.plist */,
+				8996D1C017D54C1200024BD9 /* Resources */,
 				892AA0F617CEE9A000590B05 /* Supporting Files */,
 			);
 			path = Signal;
@@ -326,6 +329,22 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		8996D1C017D54C1200024BD9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8996D1C117D54C1200024BD9 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8996D1C117D54C1200024BD9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8996D1C417D54C8C00024BD9 /* backButton@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -403,6 +422,7 @@
 				892AA10417CEE9A000590B05 /* Default@2x.png in Resources */,
 				892AA10617CEE9A000590B05 /* Default-568h@2x.png in Resources */,
 				892AA13A17CEF7B400590B05 /* SampleMail.plist in Resources */,
+				8996D1C517D54C8C00024BD9 /* backButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

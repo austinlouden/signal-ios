@@ -135,6 +135,7 @@
     }
     
     cell.email = [emails objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
