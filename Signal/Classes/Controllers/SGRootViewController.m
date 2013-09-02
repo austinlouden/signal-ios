@@ -41,7 +41,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = YES;
     
-    NSString *authToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkIjp7ImVtYWlsX2hhc2giOiJmZGI4NzQ4ODA0MWUwNWYzMmQ2MzE0MGJhOTliY2Y5ZiIsImRvbWFpbiI6ImdtYWlsLmNvbSIsImV4cCI6MTM5MzQ5MTE5MywiYWRtaW4iOmZhbHNlfSwidiI6MCwiaWF0IjoxMzc3OTM5MTkzfQ.RqA1i63pMk1eyQZeSBY-5cxoMKTqtSdIm7YE-Xi8P0w";
+    NSString *authToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkIjp7ImVtYWlsX2hhc2giOiJmZGI4NzQ4ODA0MWUwNWYzMmQ2MzE0MGJhOTliY2Y5ZiIsImRvbWFpbiI6ImdtYWlsLmNvbSIsImV4cCI6MTM5MzcwNTYyNywidGltZV9oYXNoIjoiMC4xOTQ4NDcwMCAxMzc4MTUzNjI3IiwiYWRtaW4iOmZhbHNlfSwidiI6MCwiaWF0IjoxMzc4MTUzNjI3fQ.TLlR0lMdUpcd43y_DkevxOcS2A2ZYaJBFxcuCEoS9jw";
     
     // get the email JSON
     [[SGAPIClient sharedClient] getPath:@"users/fdb87488041e05f32d63140ba99bcf9f.json" parameters:@{@"auth": authToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
