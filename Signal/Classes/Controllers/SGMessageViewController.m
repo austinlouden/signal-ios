@@ -80,8 +80,7 @@
     }
     
     NSString *testBody = [_email objectForKey:@"body"];
-    
-    NSString *wrappedBody = [NSString stringWithFormat:@"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" id=\"iphone-viewport\" content=\"width=device-width, initial-scale=1.0\"><div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
+    NSString *wrappedBody = [NSString stringWithFormat:@"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" id=\"iphone-viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0\"><div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
     [webView loadHTMLString:wrappedBody baseURL:nil];
     webView.keyboardDisplayRequiresUserAction = NO;
     
@@ -133,14 +132,14 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    CGSize contentSize = webView.scrollView.contentSize;
-    CGSize viewSize = self.view.bounds.size;
     
-    float rw = viewSize.width / contentSize.width;
-    
-    webView.scrollView.minimumZoomScale = rw;
-    webView.scrollView.maximumZoomScale = rw;
-    webView.scrollView.zoomScale = rw;
+    CGFloat width = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollWidth;"] floatValue];
+    CGFloat height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"] floatValue];
+
+    float zoom = self.view.frame.size.width/width;
+    webView.scrollView.zoomScale = zoom;
+    webView.scrollView.contentSize = CGSizeMake(width, height);
+     
     
 }
 
