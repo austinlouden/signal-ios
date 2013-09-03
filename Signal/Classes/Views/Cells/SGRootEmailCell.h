@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SGEmail.h"
 
 @interface SGRootEmailCell : UITableViewCell
-@property (nonatomic, strong) NSDictionary *email;
+@property (nonatomic, strong) SGEmail *email;
 @end

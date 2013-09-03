@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SGEmail.h"
 
 @interface SGMessageViewController : UIViewController <UIWebViewDelegate>
-- (id)initWithEmail:(NSDictionary *)email;
+- (id)initWithEmail:(SGEmail *)email;
 @end

@@ -47,6 +47,7 @@
 		892AA13F17CEFC3F00590B05 /* SGRootEmailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA13E17CEFC3F00590B05 /* SGRootEmailCell.m */; };
 		892AA14217CF889C00590B05 /* SGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA14117CF889C00590B05 /* SGMessageViewController.m */; };
 		8996D1C517D54C8C00024BD9 /* backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8996D1C417D54C8C00024BD9 /* backButton@2x.png */; };
+		89C900B417D61DCB001E0F1F /* SGEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C900B317D61DCB001E0F1F /* SGEmail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,8 @@
 		892AA14017CF889C00590B05 /* SGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMessageViewController.h; sourceTree = "<group>"; };
 		892AA14117CF889C00590B05 /* SGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMessageViewController.m; sourceTree = "<group>"; };
 		8996D1C417D54C8C00024BD9 /* backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButton@2x.png"; sourceTree = "<group>"; };
+		89C900B217D61DCB001E0F1F /* SGEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGEmail.h; sourceTree = "<group>"; };
+		89C900B317D61DCB001E0F1F /* SGEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGEmail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +271,7 @@
 		892AA12417CEEA7E00590B05 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				89C900B117D61D92001E0F1F /* Model */,
 				892AA13B17CEFC0600590B05 /* Views */,
 				892AA12917CEEE9C00590B05 /* External */,
 				892AA12517CEEA7E00590B05 /* Controllers */,
@@ -343,6 +347,15 @@
 				8996D1C417D54C8C00024BD9 /* backButton@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		89C900B117D61D92001E0F1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89C900B217D61DCB001E0F1F /* SGEmail.h */,
+				89C900B317D61DCB001E0F1F /* SGEmail.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,6 +489,7 @@
 				8926290A17D2910500425858 /* AFXMLRequestOperation.m in Sources */,
 				8926290B17D2910500425858 /* UIImageView+AFNetworking.m in Sources */,
 				8926290E17D2914600425858 /* SGAPIClient.m in Sources */,
+				89C900B417D61DCB001E0F1F /* SGEmail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

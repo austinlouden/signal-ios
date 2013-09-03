@@ -7,6 +7,7 @@
 //
 
 #import "SGRootEmailCell.h"
+#import "SGEmail.h"
 
 @interface SGRootEmailCell ()
 {
@@ -56,24 +57,21 @@
     return self;
 }
 
-- (void)setEmail:(NSDictionary *)email
+- (void)setEmail:(SGEmail *)email
 {
-    senderLabel.text = [[[email objectForKey:@"meta"] objectForKey:@"from"] objectForKey:@"name"];
-    subjectLabel.text = [self stringByStrippingHTML:[email objectForKey:@"subject"]];
-    bodyLabel.text = [self stringByStrippingHTML:[email objectForKey:@"body"]];
+    senderLabel.text = email.fromName;
+    subjectLabel.text = [email stringByStrippingHTML:email.subject];
+    bodyLabel.text = [email stringByStrippingHTML:email.body];
 
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"EEE, MMM dd, yyyy 'at' hh:mm a"];
-    NSDate *date = [dateFormat dateFromString:[[email objectForKey:@"meta"] objectForKey:@"date"]];
-    float interval = (float) (([[NSDate date] timeIntervalSinceDate: date]/60.0f)/60.0f)/24.0f;
+    float interval = (float) (([[NSDate date] timeIntervalSinceDate: email.date]/60.0f)/60.0f)/24.0f;
     if(interval <= 1) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"hh:mm a"];
-        dateLabel.text = [formatter stringFromDate:date];
+        dateLabel.text = [formatter stringFromDate:email.date];
     } else {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"MMM dd"];
-        dateLabel.text = [formatter stringFromDate:date];
+        dateLabel.text = [formatter stringFromDate:email.date];
     }
     
 }
@@ -98,28 +96,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-}
-
-#pragma mark - Helpers
-
-- (NSString *)stringByStrippingHTML:(NSString*)s
-{
-    NSRange r;
-    while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
-        s = [s stringByReplacingCharactersInRange:r withString:@""];
-    return s;
-}
-
-- (NSInteger)midnightsFromDate:(NSDate *)startDate toDate:(NSDate *)endDate
-{
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSInteger startDay = [calendar ordinalityOfUnit:NSDayCalendarUnit
-                                             inUnit:NSEraCalendarUnit
-                                            forDate:startDate];
-    NSInteger endDay = [calendar ordinalityOfUnit:NSDayCalendarUnit
-                                           inUnit:NSEraCalendarUnit
-                                          forDate:endDate];
-    return endDay - startDay;
 }
 
 @end

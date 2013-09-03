@@ -11,6 +11,7 @@
 #import "SGMessageViewController.h"
 #import "SGRootEmailCell.h"
 #import "SGAPIClient.h"
+#import "SGEmail.h"
 
 #import "IIViewDeckController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -70,15 +71,14 @@
     // get the email JSON
     [[SGAPIClient sharedClient] getPath:@"users/fdb87488041e05f32d63140ba99bcf9f.json" parameters:@{@"auth": authToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for(int i=0; i<[[responseObject objectForKey:@"emails"] allKeys].count; i++) {
-            [emails addObject:[[responseObject objectForKey:@"emails"] objectForKey:[[[responseObject objectForKey:@"emails"] allKeys] objectAtIndex:i]]];
+            SGEmail *email = [[SGEmail alloc] initWithDictionary:[[responseObject objectForKey:@"emails"] objectForKey:[[[responseObject objectForKey:@"emails"] allKeys] objectAtIndex:i]]];
+            [emails addObject:email];
         }
         
         // sort the email array by date (most recent first)
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"EEE, MMM dd, yyyy 'at' hh:mm a"];
-        [emails sortUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
-            NSDate *first = [dateFormat dateFromString:[[obj1 objectForKey:@"meta"] objectForKey:@"date"]];
-            NSDate *second = [dateFormat dateFromString:[[obj2 objectForKey:@"meta"] objectForKey:@"date"]];
+        [emails sortUsingComparator:^NSComparisonResult(SGEmail *email1, SGEmail *email2) {
+            NSDate *first = email1.date;
+            NSDate *second = email2.date;
             return [second compare:first];
         }];
         

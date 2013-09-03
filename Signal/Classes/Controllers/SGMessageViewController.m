@@ -7,9 +7,10 @@
 //
 
 #import "SGMessageViewController.h"
+#import "SGEmail.h"
 
 @interface SGMessageViewController ()
-@property (nonatomic, strong) NSDictionary *email;
+@property (nonatomic, strong) SGEmail *email;
 @end
 
 @implementation SGMessageViewController
@@ -24,11 +25,10 @@
     return self;
 }
 
-- (id)initWithEmail:(NSDictionary *)email
+- (id)initWithEmail:(SGEmail *)email
 {
     if (self = [super init]) {
         _email = email;
-        NSLog(@"%@", _email);
     }
     
     return self;
@@ -79,14 +79,14 @@
         }
     }
     
-    NSString *testBody = [_email objectForKey:@"body"];
-    NSString *wrappedBody = [NSString stringWithFormat:@"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" id=\"iphone-viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0\"><div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
+    NSString *testBody = _email.body;
+    NSString *wrappedBody = [NSString stringWithFormat:@"<html style=\"font-family:Helvetica;\"><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" id=\"iphone-viewport\" content=\"width=640, initial-scale=1.0\"><div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
     [webView loadHTMLString:wrappedBody baseURL:nil];
     webView.keyboardDisplayRequiresUserAction = NO;
     
     // labels inside the web view's scroll view
     UITextView *subjectField = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, self.view.frame.size.width, 100.0f)];
-    subjectField.text = [_email objectForKey:@"subject"];
+    subjectField.text = [_email stringByStrippingHTML:_email.subject];
     subjectField.backgroundColor = [UIColor clearColor];
     subjectField.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
     [subjectField sizeToFit];
@@ -94,7 +94,7 @@
     [webView.scrollView addSubview:subjectField];
     
     UILabel *senderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 30.0f)];
-    senderLabel.text = [[[_email objectForKey:@"meta"] objectForKey:@"from"] objectForKey:@"name"];
+    senderLabel.text = _email.fromName;
     senderLabel.textColor = [UIColor colorWithRed:0.0f green:122.0f/255.0f blue:1.0f alpha:1.0f];
     senderLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0f];
     senderLabel.backgroundColor = [UIColor clearColor];
@@ -103,7 +103,7 @@
     [webView.scrollView addSubview:senderLabel];
     
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 30.0f)];
-    dateLabel.text = [[_email objectForKey:@"meta"] objectForKey:@"date"];
+    dateLabel.text = _email.dateString;
     dateLabel.textColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
     dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
     dateLabel.backgroundColor = [UIColor clearColor];
