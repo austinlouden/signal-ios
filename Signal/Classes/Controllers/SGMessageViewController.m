@@ -8,10 +8,14 @@
 
 #import "SGMessageViewController.h"
 #import "SGEmail.h"
+#import <Firebase/Firebase.h>
 
 #define HEADER_HEIGHT 50.0f
 
 @interface SGMessageViewController ()
+{
+    Firebase *firebase;
+}
 @property (nonatomic, strong) SGEmail *email;
 @end
 
@@ -40,6 +44,19 @@
 {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
+    
+    // Create a reference to a Firebase location
+    firebase = [[Firebase alloc] initWithUrl:@"https://signal.firebaseio.com/users/fdb87488041e05f32d63140ba99bcf9f"];
+    [firebase authWithCredential:@"eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJhZG1pbiI6IHRydWUsICJpYXQiOiAxMzc4NDAxNTUxLCAiZXhwaXJlcyI6IDEzNzU4MDk1NTEsICJkIjogeyJlbWFpbF9oYXNoIjogIjg2Mjg4NjM1ZTU4NTk3NWNlY2UyMjRhZmM4M2VhOGU1IiwgImRvbWFpbiI6ICJnbWFpbC5jb21kIiwgImV4cGlyZXMiOiAxMzc1ODA5NTUxfSwgInYiOiAwfQ.O2yd-GcFILep7bHj8_7E6XC7Z-gIPgAKQKNZAzfq-Gg" withCompletionBlock:^(NSError *error, id data) {
+        ;
+    } withCancelBlock:^(NSError *error) {
+        ;
+    }];
+    
+    // Read data and react to changes
+    [firebase observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"%@ -> %@", snapshot.name, snapshot.value);
+    }];
     
     // header
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, HEADER_HEIGHT)];
@@ -90,13 +107,15 @@
     }
     
     NSString *testBody = _email.body;
-    NSString *wrappedBody = [NSString stringWithFormat:@"<html style=\"font-family:Helvetica;\"><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" id=\"iphone-viewport\" content=\"width=640, initial-scale=1.0\"><div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
+    NSString *wrappedBody = [NSString stringWithFormat:@"<html style=\"font-family:Helvetica;\"><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\" id=\"iphone-viewport\" content=\"width=device-width, initial-scale=1.0\"><div id='signal_body'>%@</div><script>document.getElementById('signal_body').setAttribute('contentEditable','true')</script>",testBody];
     [webView loadHTMLString:wrappedBody baseURL:nil];
     webView.keyboardDisplayRequiresUserAction = NO;
     
     // labels inside the web view's scroll view
     UITextView *subjectField = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, self.view.frame.size.width, 100.0f)];
     subjectField.text = [_email stringByStrippingHTML:_email.subject];
+    subjectField.tag = 12;
+    subjectField.delegate = self;
     subjectField.backgroundColor = [UIColor clearColor];
     subjectField.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f];
     [subjectField sizeToFit];
@@ -150,6 +169,14 @@
     webView.scrollView.zoomScale = zoom;
     webView.scrollView.contentSize = CGSizeMake(width, height);
      
+    
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [[[[firebase childByAppendingPath:@"emails"] childByAppendingPath:_email.emailID] childByAppendingPath:@"subject"] setValue:textView.text];
     
 }
 

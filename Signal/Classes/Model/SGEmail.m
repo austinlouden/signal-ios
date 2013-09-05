@@ -9,7 +9,7 @@
 #import "SGEmail.h"
 
 @implementation SGEmail
-@synthesize body = _body, date = _date, dateString = _dateString, fromName = _fromName, fromEmail = _fromEmail, modifiedDate = _modifiedDate, subject = _subject;
+@synthesize body = _body, date = _date, dateString = _dateString, fromName = _fromName, fromEmail = _fromEmail, modifiedDate = _modifiedDate, subject = _subject, emailID = _emailID;
 
 - (id)initWithDictionary:(NSDictionary *)emailDictionary
 {

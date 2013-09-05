@@ -54,10 +54,16 @@
     [self.view addSubview:_tableView];
     
     emails = [NSMutableArray array];
-    [self getEmails];
     [self setupUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if(emails && emails.count) {
+        emails = [NSMutableArray array];
+    }
+    [self getEmails];
+}
 #pragma mark - Setup
 
 - (void)getEmails
@@ -74,6 +80,7 @@
     [[SGAPIClient sharedClient] getPath:@"users/fdb87488041e05f32d63140ba99bcf9f.json" parameters:@{@"auth": authToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for(int i=0; i<[[responseObject objectForKey:@"emails"] allKeys].count; i++) {
             SGEmail *email = [[SGEmail alloc] initWithDictionary:[[responseObject objectForKey:@"emails"] objectForKey:[[[responseObject objectForKey:@"emails"] allKeys] objectAtIndex:i]]];
+            email.emailID = [[[responseObject objectForKey:@"emails"] allKeys] objectAtIndex:i];
             [emails addObject:email];
         }
         

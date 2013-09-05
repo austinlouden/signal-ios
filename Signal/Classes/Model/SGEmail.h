@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *fromEmail;
 @property (nonatomic, strong) NSDate *modifiedDate;
 @property (nonatomic, strong) NSString *subject;
+@property (nonatomic, strong) NSString *emailID;
 - (id)initWithDictionary:(NSDictionary *)emailDictionary;
 - (NSString *)stringByStrippingHTML:(NSString*)string;
 @end
