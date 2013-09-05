@@ -57,6 +57,14 @@
     backArrow.frame = CGRectMake(4.0f, 18.0f, 20.5f, 26.0f);
     [headerView addSubview:backArrow];
     
+    UIImageView *archiveButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"archiveButton.png"]];
+    archiveButton.frame = CGRectMake(288.0f, 22.0f, 28.0f, 20.5f);
+    [headerView addSubview:archiveButton];
+    
+    UIImageView *replyButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"replyButton.png"]];
+    replyButton.frame = CGRectMake(250.0f, 22.0f, 33.0f, 20.5f);
+    [headerView addSubview:replyButton];
+    
     UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, HEADER_HEIGHT-0.5f, self.view.frame.size.width, 0.5f)];
     divider.backgroundColor = [UIColor colorWithWhite:(178.0f/255.0f) alpha:1.0f];
     

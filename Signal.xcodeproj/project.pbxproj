@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891A3C9017D90161008B2E4D /* composeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891A3C8E17D90161008B2E4D /* composeButton@2x.png */; };
+		891A3C9117D90161008B2E4D /* replyButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891A3C8F17D90161008B2E4D /* replyButton@2x.png */; };
+		891A3C9317D90169008B2E4D /* archiveButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891A3C9217D90169008B2E4D /* archiveButton@2x.png */; };
 		892628E817D28D3000425858 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892628E717D28D3000425858 /* Firebase.framework */; };
 		892628EA17D28D4D00425858 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 892628E917D28D4D00425858 /* libicucore.dylib */; };
 		892628EC17D28D5500425858 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892628EB17D28D5500425858 /* CFNetwork.framework */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		891A3C8E17D90161008B2E4D /* composeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "composeButton@2x.png"; sourceTree = "<group>"; };
+		891A3C8F17D90161008B2E4D /* replyButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "replyButton@2x.png"; sourceTree = "<group>"; };
+		891A3C9217D90169008B2E4D /* archiveButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archiveButton@2x.png"; sourceTree = "<group>"; };
 		892628E717D28D3000425858 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		892628E917D28D4D00425858 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		892628EB17D28D5500425858 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -344,6 +350,9 @@
 		8996D1C117D54C1200024BD9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				891A3C9217D90169008B2E4D /* archiveButton@2x.png */,
+				891A3C8E17D90161008B2E4D /* composeButton@2x.png */,
+				891A3C8F17D90161008B2E4D /* replyButton@2x.png */,
 				8996D1C417D54C8C00024BD9 /* backButton@2x.png */,
 			);
 			path = Images;
@@ -434,8 +443,11 @@
 				892AA10217CEE9A000590B05 /* Default.png in Resources */,
 				892AA10417CEE9A000590B05 /* Default@2x.png in Resources */,
 				892AA10617CEE9A000590B05 /* Default-568h@2x.png in Resources */,
+				891A3C9317D90169008B2E4D /* archiveButton@2x.png in Resources */,
 				892AA13A17CEF7B400590B05 /* SampleMail.plist in Resources */,
+				891A3C9017D90161008B2E4D /* composeButton@2x.png in Resources */,
 				8996D1C517D54C8C00024BD9 /* backButton@2x.png in Resources */,
+				891A3C9117D90161008B2E4D /* replyButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
