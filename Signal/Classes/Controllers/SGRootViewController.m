@@ -17,6 +17,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Firebase/Firebase.h>
 
+#define HEADER_HEIGHT 50.0f
+
 @interface SGRootViewController ()
 {
     NSMutableArray *emails;
@@ -47,7 +49,7 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.contentInset = UIEdgeInsetsMake(40,0,0,0);
+    _tableView.contentInset = UIEdgeInsetsMake(HEADER_HEIGHT-20.0f,0,0,0);
     _tableView.hidden = YES;
     [self.view addSubview:_tableView];
     
@@ -66,7 +68,7 @@
     [self.view addSubview:aiView];
     [aiView startAnimating];
     
-    NSString *authToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkIjp7ImVtYWlsX2hhc2giOiJmZGI4NzQ4ODA0MWUwNWYzMmQ2MzE0MGJhOTliY2Y5ZiIsImRvbWFpbiI6ImdtYWlsLmNvbSIsImV4cCI6MTM5MzcwNTYyNywidGltZV9oYXNoIjoiMC4xOTQ4NDcwMCAxMzc4MTUzNjI3IiwiYWRtaW4iOmZhbHNlfSwidiI6MCwiaWF0IjoxMzc4MTUzNjI3fQ.TLlR0lMdUpcd43y_DkevxOcS2A2ZYaJBFxcuCEoS9jw";
+    NSString *authToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjEzODA4NjM0MTIsImQiOnsiZW1haWxfaGFzaCI6ImZkYjg3NDg4MDQxZTA1ZjMyZDYzMTQwYmE5OWJjZjlmIiwiZG9tYWluIjoiZ21haWwuY29tIiwidGltZV9oYXNoIjoiMC4yNDY0NTAwMCAxMzc4MjcxNDEyIiwiYWRtaW4iOmZhbHNlfSwidiI6MCwiaWF0IjoxMzc4MjcxNDEyfQ.Zl2wB0Yf-D2m3d2yfkVqq7QmYhtvJBqpGnWX2AG4fd0";
     
     // get the email JSON
     [[SGAPIClient sharedClient] getPath:@"users/fdb87488041e05f32d63140ba99bcf9f.json" parameters:@{@"auth": authToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -95,17 +97,17 @@
 - (void)setupUI
 {
     // create the header
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithWhite:(248.0f/255.0f) alpha:1.0f];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 6.0f, self.view.frame.size.width, HEADER_HEIGHT)];
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
     headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.text = @"Inbox";
     headerLabel.textColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     
-    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 39.0f, self.view.frame.size.width, 0.5f)];
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, HEADER_HEIGHT-0.5f, self.view.frame.size.width, 0.5f)];
     divider.backgroundColor = [UIColor colorWithWhite:0.5f alpha:1.0f];
     
     [headerView addSubview:headerLabel];

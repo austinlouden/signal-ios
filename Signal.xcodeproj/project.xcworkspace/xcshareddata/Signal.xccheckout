@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A8ABC72A-D8A0-492E-8029-6743149C0DAA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Signal</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3F943F79-7DB5-46BC-AEAA-129029A49123</key>
+		<string>ssh://github.com/austinlouden/signal-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Signal.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3F943F79-7DB5-46BC-AEAA-129029A49123</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/austinlouden/signal-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3F943F79-7DB5-46BC-AEAA-129029A49123</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3F943F79-7DB5-46BC-AEAA-129029A49123</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Signal</string>
+		</dict>
+	</array>
+</dict>
+</plist>

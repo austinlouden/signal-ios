@@ -9,6 +9,8 @@
 #import "SGMessageViewController.h"
 #import "SGEmail.h"
 
+#define HEADER_HEIGHT 50.0f
+
 @interface SGMessageViewController ()
 @property (nonatomic, strong) SGEmail *email;
 @end
@@ -40,22 +42,22 @@
 	self.view.backgroundColor = [UIColor whiteColor];
     
     // header
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, HEADER_HEIGHT)];
     headerView.backgroundColor = [UIColor colorWithWhite:0.98f alpha:0.95f];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(24.0f, 2.0f, 40.0f, 40.0f);
+    backButton.frame = CGRectMake(0.0f, 11.0f, 80.0f, 40.0f);
     backButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15.0f];
-    [backButton setTitle:@"Inbox" forState:UIControlStateNormal];
+    [backButton setTitle:@"   Inbox" forState:UIControlStateNormal];
     [backButton setBackgroundColor:[UIColor clearColor]];
     [backButton setTitleColor:[UIColor colorWithRed:(0.0f/255.0f) green:(102.0f/255.0f) blue:(255.0f/255.0f) alpha:1.0f] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backPressed) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *backArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backButton.png"]];
-    backArrow.frame = CGRectMake(4.0f, 8.0f, 20.5f, 26.0f);
+    backArrow.frame = CGRectMake(4.0f, 18.0f, 20.5f, 26.0f);
     [headerView addSubview:backArrow];
     
-    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 39.5f, self.view.frame.size.width, 0.5f)];
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, HEADER_HEIGHT-0.5f, self.view.frame.size.width, 0.5f)];
     divider.backgroundColor = [UIColor colorWithWhite:(178.0f/255.0f) alpha:1.0f];
     
     [headerView addSubview:backButton];
@@ -63,7 +65,7 @@
     [self.view addSubview:headerView];
 
     // web view
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 40.0f, self.view.frame.size.width, self.view.frame.size.height - 40.0f)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - 40.0f)];
     webView.delegate = self;
     webView.scrollView.backgroundColor = [UIColor whiteColor];
     webView.backgroundColor = [UIColor whiteColor];
