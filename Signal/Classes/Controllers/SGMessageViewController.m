@@ -53,10 +53,11 @@
         ;
     }];
     
-    // Read data and react to changes
+    /* Read data and react to changes
     [firebase observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"%@ -> %@", snapshot.name, snapshot.value);
+        //NSLog(@"%@ -> %@", snapshot.name, snapshot.value);
     }];
+     */
     
     // header
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, HEADER_HEIGHT)];
